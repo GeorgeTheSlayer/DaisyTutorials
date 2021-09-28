@@ -1,0 +1,3 @@
+This is where any video files will be added for the tutorial. 
+This will be mostly where the finished videos will be however there will be a folder that includes clips and edited files
+The video editor to be used is adobe rush.
