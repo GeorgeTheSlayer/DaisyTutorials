@@ -21,31 +21,34 @@
 \pagebreak
 \section{Introduction}
 
-This tutorial was made on the Electrosmith Daisy Seed platform with beginners in mind. It will go over how to upload files to the Daisy and how to look through the example folders provided with the Daisy.
+%This tutorial was made on the Electrosmith Daisy Seed platform with beginners in mind. It will go over how to upload files to the Daisy and how to look through the example folders provided with the Daisy.
+Hello my name is Holland Sersen, and today we will be learning how to use the Electrosmith Daisy Seed.
 
-For this tutorial you will need; a Daisy Seed, a breadboard, and an audio jack to get audio from the daisy board. You will also need to follow along the daisy tutorial on how to install in the toolchains (Linked here).\
+For this tutorial you will need; a Daisy Seed, a breadboard, and an audio jack to get audio from the daisy board. You will also need to follow along the official electrosmith tutorial on how to install the toolchains required to compile the code (Linked here).\
 
-This tutorial will not go into; intermediate C++ coding (for loops, main function, init objects) or hardware design (buttons, potentiometer, rotary encoders, or audio inputs) however they will be available here (Link).
+%This tutorial will not go into; intermediate C++ coding (for loops, main function, init objects) or hardware design (buttons, potentiometer, rotary encoders, or audio inputs) however they will be available here (Link).
+Although this series will go through how to code the Daisy seed basic knowledge of C++ is required to follow along for this tutorial. With that out of the way let get to it.
 
 %Section on how to open Folders in VSCode
 \section{Opening Folders in VSCode}
 
-First we have to open the folder in VSCode. There are a couple ways of doing this but the easiest way is to open up VSCode, Click File, then Open and then find the example folder you would want to open. For this tutorial we will be exploring the oscillator example folder.
+First we have to open the folder in VSCode. There are a couple ways of doing this but the easiest way is to open up VSCode, Click File, then Open. Then go to your DaisyExamples Folder on your computer, go into the seed folder, and then oscillator. Then click open.
 
-VSCode should automatically show all the file folders and directories. You should see a couple things. First we have a folder called VSCode, this folder just contains settings for VSCode and is unimportant for this tutorial, so ignore it. Next we have the MAKEFILE. Although this isn’t covered in the tutorial, the MAKEFILE is what tells the compiler what to compile and how to compile it. If you want to learn more then there is a link in the description for some resources on the basics of MAKEFILES.
-
-Next you should see the file oscillator.cpp, click on this. This file is what our Daisy will run, it defines what our daisy program should do and how it should react to incoming audio.
+VSCode should automatically show all the file folders and directories. You should see a couple different files but the one we are interested in is oscillator.cpp. This file is what our Daisy will run. The file defines what our daisy will do.
 
 
 \section{Compile Files to Daisy}
+To compile the code we will have to use the command line.
 
 When you opened this folder VSCode automatically created a terminal in the current folder of your computer. To open this, click the button called “terminal” on the bottom bar. Next, type in the terminal “make”. This will automatically compile the code, it will also tell you if you have any errors in your code or if it can’t compile.
 
-If you get an error check to make sure your code matches the code in the examples on Github, or verify that you have the toolchain installed correctly. Then to upload the code to your Daisy, while it is connected via USB type in the console “make -dfu” this should work without trouble.
+If you get an error check to make sure your code matches the code in the examples on Github, or verify that you have the toolchain installed correctly. Then to upload the code to your Daisy, first hold the boot button and then press reset while it is connected via USB. The led on the board should start to flash. Then type in the console “make -dfu” this should work without trouble.
 
 
 \section{How to get audio in and out of the Daisy Seed}
 Next we need to get audio from the Daisy and make it audible. I would recommend some sort of bread board so you can test circuits on the Daisy. The first and most important circuit is getting audio out from the circuit. Find the pinout of the Daisy from Github, some wires and your audio jack.
+
+TODO: Finish when breadboarding
 
 \section{C++ File Functions}
 Now that we got the Daisy working on a basic level let's take a quick look at what the code is doing. First is the main function:
@@ -76,9 +79,9 @@ int main(void)
 \end{lstlisting}
 
 
-The main function is what the daisy runs, all of the code is defined here in someway, and this is the function the daisy will run. If you want to learn more about main functions there will be a link in the description below. But for this tutorial all you need to know is that the main function sets the frequency of the oscillator 
+The main function is what the daisy runs, all of the code is defined here in someway, and this is the function the daisy will run. If you want to learn more about main functions there will be a link in the description below. But for this tutorial all you need to know is that the main function sets the frequency of the oscillator and then starts processing audio.
 
-Next we have the process audio block. The Process audio block is where the audio is actually played back and processed. You can see the oscillator is being played here and is going into the both the left and right audio output.
+Next we have the process audio block. The Process audio block is where the audio is actually played back and processed. You can see the oscillator is being played here and it is going into the both the left and right audio output.
 
 \begin{lstlisting}
 
@@ -100,16 +103,18 @@ static void AudioCallback(AudioHandle::InterleavingInputBuffer  in, AudioHandle:
 \end{lstlisting}
 
 \section{Compile code and verify that it is working}
-Let's change the oscillator's pitch so that it sounds different that the default. First lets change the osc.SetFreq to 880 instead of 440. 
+Let's change the oscillator's pitch so that it sounds different that the default. First let's change the osc.SetFreq() to 880 instead of 440. 
 
 \begin{lstlisting}
 //Changed from 440 to 880
 osc.SetFreq(880);
 \end{lstlisting}
 
-This should produce a perfect octave above the previous note. So let's compile this to the Daisy and see this for ourselves. First lets 
+This should produce a perfect octave above the previous note. So let's compile this to the Daisy and see this for ourselves. 
 
 
 \section{Outro}
+
+With this tutorial hopefully you were able to get a simple sine wave from the Daisy Seed. If you want to learn more there will be links in the description as to how to get better and as always take it easy!
 
 \end{document}
